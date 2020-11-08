@@ -1,0 +1,20 @@
+{{- $inServerMode := .Site.IsServer }}
+{{- $sass         := "style.sass" }}
+{{- $cssTarget    := "css/style.css" }}
+{{- $cssOpts      := cond ($inServerMode) (dict "targetPath" $cssTarget "enableSourceMap" true) (dict "targetPath" $cssTarget "outputStyle" "compressed") }}
+
+
+<head>
+    <meta name="description" content="{{ if .Params.summary }}{{ .Params.summary }}{{ else if .Site.Params.Description }}{{ .Site.Params.Description }}{{ else }}Hardcoded description; the author should update :){{ end }}" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    
+    {{- if $inServerMode }}
+        {{- $css := resources.Get $sass | toCSS $cssOpts }}
+        <link rel="stylesheet" type="text/css" href="{{ $css.RelPermalink }}">
+        {{- else }}
+        {{- $css := resources.Get $sass | toCSS $cssOpts | minify | fingerprint }}
+        <link rel="stylesheet" type="text/css" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
+    {{- end }}
+</head>

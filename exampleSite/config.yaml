@@ -1,0 +1,21 @@
+baseURL: "http://example.org/"
+languageCode: "en-us"
+title: "My New Hugo Site"
+theme: "freelancer-hugo"
+
+menu:
+  main:
+    - identifier: home
+      name: Home
+      pre: <i class='fa fa-heart'></i>
+      url: /
+      weight: 1
+    - name: Blog
+      post: <span class='alert'>New!</span>
+      pre: <i class='fa fa-road'></i>
+      url: /posts
+      weight: 2
+
+params:
+  hero:
+    name: Jakob Majnek

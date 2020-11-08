@@ -1,0 +1,20 @@
+
+{{ define "main" }}
+    {{ if .Site.Params.hero }}
+        {{ partial "hero.html" . }}
+    {{ end }}
+
+
+<div id="nav-border" class="container">
+    <nav id="nav" class="nav justify-content-center">
+        {{ range .Site.Menus.main }}
+            <a class="nav-link" href="{{ .URL }}">
+            {{ $text := print .Name | safeHTML }}
+            {{ $text }}
+            </a>
+        {{ end }}
+    </nav>
+</div>
+
+
+{{ end }}
