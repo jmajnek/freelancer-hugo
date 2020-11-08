@@ -1,16 +1,18 @@
 {
-    "scripts": {
-        "build": "cd ./exampleSite && hugo",
-        "start:release": "npm run build -- server",
-        "start": "npm run start:release -- --themesDir ../.. -D",
-        "copy:assets": "npm run copy:bulma",
-        "copy:bulma": "rimraf ./assets/bulma/ && copyfiles -u 2 \"./node_modules/bulma/**/*.sass\" \"./assets/bulma/\""
-    },
-    "dependencies": {
-        "bulma": "^0.9.1"
-    },
-    "devDependencies": {
-        "copyfiles": "^2.4.0",
-        "rimraf": "^3.0.2"
-    }
+  "scripts": {
+    "build": "cd ./exampleSite && hugo",
+    "start:release": "npm run build -- server",
+    "start": "npm run start:release -- --themesDir ../.. -D",
+    "copy:assets": "npm run copy:bulma",
+    "copy:bulma": "rimraf ./assets/bulma/ && copyfiles -u 2 \"./node_modules/bulma/**/*.sass\" \"./assets/bulma/\""
+  },
+  "dependencies": {
+    "bulma": "^0.9.1"
+  },
+  "devDependencies": {
+    "copyfiles": "^2.4.0",
+    "prettier": "^2.1.2",
+    "prettier-plugin-go-template": "0.0.10",
+    "rimraf": "^3.0.2"
+  }
 }
