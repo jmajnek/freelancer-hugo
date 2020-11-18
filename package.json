@@ -3,11 +3,20 @@
     "build": "cd ./exampleSite && hugo",
     "start:release": "npm run build -- server",
     "start": "npm run start:release -- --themesDir ../.. -D",
-    "copy:assets": "npm run copy:bulma",
-    "copy:bulma": "rimraf ./assets/bulma/ && copyfiles -u 2 \"./node_modules/bulma/**/*.sass\" \"./assets/bulma/\""
+    "new:post": "npm run build -- --themesDir ../.. new posts/test.md",
+    "copy:assets": "npm run copy:bulma && npm run copy:stickyjs && npm run copy:particlesjs && npm run copy:gumshoejs",
+    "copy:bulma": "rimraf ./assets/bulma/ && copyfiles -u 2 \"./node_modules/bulma/**/*.sass\" \"./assets/bulma/\"",
+    "copy:stickyjs": "rimraf ./assets/sticky-js/ && copyfiles -u 3 \"./node_modules/sticky-js/dist/sticky.min.js\" \"./assets/sticky-js/\"",
+    "copy:particlesjs": "rimraf ./assets/particlesjs/ && copyfiles -u 3 \"./node_modules/particlesjs/dist/particles.min.js\" \"./assets/particlesjs/\"",
+    "copy:gumshoejs": "rimraf ./assets/gumshoejs/ && copyfiles -u 3 \"./node_modules/gumshoejs/dist/gumshoe*.min.js\" \"./assets/gumshoejs/\"",
+    "copy:fontawesome": "rimraf ./assets/fontawesome/ && copyfiles -u 3 \"./node_modules/@fortawesome/fontawesome-free/css/*.min.css\" \"./node_modules/@fortawesome/fontawesome-free/scss/*.scss\" \"./node_modules/@fortawesome/fontawesome-free/webfonts/*\" \"./assets/fontawesome/\""
   },
   "dependencies": {
-    "bulma": "^0.9.1"
+    "@fortawesome/fontawesome-free": "^5.15.1",
+    "bulma": "^0.9.1",
+    "gumshoejs": "^5.1.2",
+    "particlesjs": "^2.2.3",
+    "sticky-js": "^1.3.0"
   },
   "devDependencies": {
     "copyfiles": "^2.4.0",

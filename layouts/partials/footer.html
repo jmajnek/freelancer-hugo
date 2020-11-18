@@ -1,0 +1,23 @@
+{{ $social := .Site.Params.social }}
+
+<footer class="footer">
+  <div class="content has-text-centered">
+    <a href="#home" class="button">
+      <span class="icon">
+        <i class="fas fa-angle-double-up"></i>
+      </span>
+    </a>
+    <div class="field is-grouped is-justify-content-center">
+      {{ range $social }}
+        <p class="control">
+          <a class="button is-medium" href="{{ .link }}">
+            <span class="icon is-size-4">
+              <i class="fa-fw {{ .icon }}"></i>
+            </span>
+          </a>
+        </p>
+      {{ end }}
+    </div>
+    <div>{{ .Site.Params.hero.name }} © {{ now.Format "2006" }}</div>
+  </div>
+</footer>

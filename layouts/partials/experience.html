@@ -1,0 +1,21 @@
+{{ $experience := .Site.Params.experience }}
+
+<section class="section is-medium" id="experience">
+  <div class="header mb-6">
+    <h2 class="title section-title is-3">Experience</h2>
+    <div class="header-bar"></div>
+  </div>
+
+  {{ range $experience }}
+    <div class="columns">
+      <div class="column">
+        <div>{{ .from }} - {{ .till }}</div>
+        <div>{{ .company }}</div>
+      </div>
+      <div class="column">{{ .position }}</div>
+      <div class="column">{{ .description }}</div>
+    </div>
+    <span class="icon-box-title"></span>
+    <p></p>
+  {{ end }}
+</section>

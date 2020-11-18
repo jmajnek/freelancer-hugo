@@ -1,8 +1,24 @@
 {{ define "main" }}
 
-<h1>{{ .Title }}</h1>
-<br><br>
-{{ .Content }}
-{{ partial "footer.html" . }}
+<div class="container">
+  {{$coverImageName := index .Params "Cover"}}
+  <h1 class="title">{{ .Title }}</h1>
+  <h2 class="subtitle">{{ .Date.Format "2006-01-02" }}</h2>
+  {{if $coverImageName}}
+  {{ with .Resources.GetMatch $coverImageName  }}
+			{{ $cover := . }}
+			{{ $image := $cover.Resize "500x" }}
+			<img src="{{ with $image }}{{ $image.RelPermalink }}{{ else }}{{ .Site.BaseURL }}images/fractal_thumb.png{{ end }}" alt="{{ $image.Name }}" />
+		{{ end }}
+  {{end}}
 
+  {{ .Content }}
+
+    {{ range (.GetTerms "tags") }}
+    <span class="tag" href="{{ .Permalink }}">
+      {{ .LinkTitle }}
+    </span>
+   {{ end }}
+
+</div>
 {{ end }}

@@ -1,11 +1,48 @@
 <!DOCTYPE html>
-<html  lang="{{ .Site.LanguageCode }}">
-    {{- partial "head.html" . -}}
-    <body>
-        {{- partial "header.html" . -}}
-        <div id="content">
-        {{- block "main" . }}{{- end }}
-        </div>
-        {{- partial "footer.html" . -}}
-    </body>
+<html lang="{{ .Site.LanguageCode }}">
+  {{- partial "head.html" . -}}
+  <body>
+    {{- partial "header.html" . -}}
+    <div id="content">
+      {{- block "main" . }}{{- end }}
+    </div>
+    {{- partial "footer.html" . -}}
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/sticky-js/1.3.0/sticky.min.js"
+      integrity="sha512-3z3zGiu0PabNyuTAAfznBJFpOg4owG9oQQasE5BwiiH5BBwrAjbfgIe0RCdtHJ0BQV1YF2Shgokbz2NziLnkuQ=="
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      var sticky = new Sticky('.sticky')
+    </script>
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/gumshoe/5.1.1/gumshoe.min.js"
+      integrity="sha512-W5NqCBQ5MoBpPMuHHrM9vBTl1RJnxTmhrhROigUebWZPliv7CPqWQppC4Fqcu3uTZ/U0s9dmEsyfJcv1JmgNNg=="
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      // Get the header
+      var header = document.querySelector('.sticky')
+
+      // Initialize Gumshoe
+      var spy = new Gumshoe('#my-awesome-nav a', {
+        offset: function () {
+          return header.getBoundingClientRect().height
+        },
+      })
+    </script>
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/smooth-scroll/16.1.3/smooth-scroll.min.js"
+      integrity="sha512-HYG9E+RmbXS7oy529Nk8byKFw5jqM3R1zzvoV2JnltsIGkK/AhZSzciYCNxDMOXEbYO9w6MJ6SpuYgm5PJPpeQ=="
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      var scroll = new SmoothScroll('a[href*="#"]')
+    </script>
+
+    {{ block "scripts" . }} {{ end }}
+  </body>
 </html>

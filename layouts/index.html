@@ -3,14 +3,44 @@
     {{ partial "hero.html" . }}
   {{ end }}
 
-  <div id="nav-border" class="container">
-    <nav id="nav" class="nav justify-content-center">
-      {{ range .Site.Menus.main }}
-        <a class="nav-link" href="{{ .URL }}">
-          {{ $text := print .Name | safeHTML }}
-          {{ $text }}
-        </a>
-      {{ end }}
-    </nav>
-  </div>
+  {{ partial "nav.html" . }}
+
+  {{ if .Site.Params.aboutme }}
+    {{ partial "aboutme.html" . }}
+  {{ end }}
+
+  {{ if .Site.Params.skills }}
+    {{ partial "skills.html" . }}
+  {{ end }}
+
+  {{ if .Site.Params.experience }}
+    {{ partial "experience.html" . }}
+  {{ end }}
+
+  {{ if .Site.Params.blog }}
+    {{ partial "blog.html" . }}
+  {{ end }}
+
+  {{ if .Site.Params.contact.active }}
+    {{ partial "contact.html" . }}
+  {{ end }}
+{{ end }}
+
+{{ define "scripts" }}
+  {{ $hasParticles := .Site.Params.settings.particles }}
+
+  {{ if $hasParticles }}
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/particlesjs/2.2.3/particles.min.js"
+      integrity="sha512-jq8sZI0I9Og0nnZ+CfJRnUzNSDKxr/5Bvha5bn7AHzTnRyxUfpUArMzfH++mwE/hb2efOo1gCAgI+1RMzf8F7g=="
+      crossorigin="anonymous"
+    ></script>
+    <script type="text/javascript" lazy>
+      Particles.init({
+        selector: '.background',
+        connectParticles: true,
+        color: '#BBBBBB',
+      })
+    </script>
+  {{ end }}
 {{ end }}

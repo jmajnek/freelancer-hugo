@@ -1,0 +1,34 @@
+<section class="section is-medium" id="blog">
+  <div class="header">
+    <h2 class="title section-title is-3">Blog</h2>
+    <div class="header-bar"></div>
+  </div>
+
+  <div class="columns">
+    {{ range first 4 $.Site.RegularPages.ByPublishDate.Reverse }}
+      <div class="column">
+        <div class="card">
+          <div class="card-image">
+            <figure class="image is-4by3">
+              {{$coverImageName := index .Params "Cover"}}
+              {{if $coverImageName}}
+              {{ with .Resources.GetMatch $coverImageName  }}
+                  {{ $cover := . }}
+                  {{ $image := $cover.Resize "300x" }}
+                  <img src="{{ with $image }}{{ $image.RelPermalink }}{{ else }}{{ .Site.BaseURL }}images/fractal_thumb.png{{ end }}" alt="{{ $image.Name }}" />
+                {{ end }}
+              {{else}}
+              No image
+              {{end}}            </figure>
+
+
+
+          </div>
+          <a href="{{ .RelPermalink }}"
+            >{{ .Date.Format "2006-01-02" }} | {{ .Title }}</a
+          >
+        </div>
+      </div>
+    {{ end }}
+  </div>
+</section>
