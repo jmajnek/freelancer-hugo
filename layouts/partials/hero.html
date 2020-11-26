@@ -1,18 +1,22 @@
 {{ $hero := .Site.Params.hero }}
 {{ $contact := .Site.Params.contact }}
+{{ $greeting := index $hero "greeting" }}
 {{ $name := index $hero "name" }}
 {{ $description := index $hero "description" }}
-{{ $email := index $contact "email" }}
 
 <section class="hero is-fullheight" id="home">
-  <div class="hero-body">
-    <div class="container">
-      <div class="subtitle">Hello, my name is</div>
-      <h1 class="title">{{ $name }}</h1>
-      <h2 class="subtitle">{{ $description }}</h2>
-      <a class="button is-primary is-inverted is-outlined" href="#aboutme">
-        More
+  <div class="hero-body pb-0 is-flex is-justify-content-space-around">
+    <div class="has-text-centered m-5 p-5">
+      <div class="pretitle">{{ $greeting }}</div>
+      <div class="title">{{ $name }}</div>
+      <div class="subtitle">{{ $description }}</div>
+      <a class="mj-button" href="#aboutme">
+        About
+        <i class="fas fa-arrow-right"></i>
       </a>
+    </div>
+    <div class="hero-image">
+      <img src="/images/jm-profile-big.png" alt="" />
     </div>
   </div>
   <canvas class="background"></canvas>

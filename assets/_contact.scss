@@ -1,0 +1,17 @@
+@import 'variables';
+
+section#contact {
+  input,
+  textarea {
+    border: none;
+    border-bottom: solid 2px $input-border;
+    border-radius: 0;
+    box-shadow: none;
+    background-color: transparent;
+    resize: none;
+
+    &:focus {
+      border-bottom: solid 2px $primary;
+    }
+  }
+}

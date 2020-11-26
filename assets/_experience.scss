@@ -1,0 +1,55 @@
+@import 'variables';
+
+.section#experience {
+  .company {
+    font-size: 1.2rem;
+  }
+
+  .from-till {
+    color: $light;
+  }
+
+  .position {
+    color: $highlight;
+    font-size: 1.5rem;
+    font-weight: 800;
+
+    @media (max-width: 768px) {
+      border-right: none;
+    }
+  }
+
+  .description {
+    @media (max-width: 768px) {
+      border-right: none;
+    }
+  }
+
+  .dashed-border {
+    position: relative;
+    border-right: dashed 2px $highlight;
+
+    @media (max-width: 768px) {
+      border-right: none;
+    }
+  }
+
+  .dashed-border i {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: absolute;
+    top: 17px;
+    right: -13px;
+    width: 24px;
+    height: 24px;
+    border-radius: 12px;
+    color: white;
+    background-color: $highlight;
+
+    @media (max-width: 768px) {
+      display: none;
+    }
+  }
+}

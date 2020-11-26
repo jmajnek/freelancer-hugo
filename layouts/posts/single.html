@@ -1,0 +1,84 @@
+{{ define "main" }}
+<section class="section is-medium blog-post-single">
+    <div class="container is-max-desktop">
+      <div class="header">
+        <div class="title section-title is-3">{{ .Title }}</div>
+        <div class="subtitle">{{ .Date.Format "2006-01-02" }}</div>
+        <!-- <div class="header-bar my-1"></div> -->
+        <ul class="tags mb-2 mt-0">
+          {{ range (.GetTerms "tags") }}
+            <li class="tag is-rounded m-2"><a href="{{ .Permalink }}"><i class="fas fa-tag mx-1"></i> {{ .LinkTitle }}</a></li>
+          {{ end }}
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-image">
+          <figure class="image">
+            {{ $coverImageName := index .Params "coverImage" }}
+            {{if $coverImageName}}
+            {{ with .Resources.GetMatch $coverImageName  }}
+                {{ $cover := . }}
+                {{ $image := $cover }}
+                <img src="{{ with $image }}{{ $image.RelPermalink }}{{ else }}{{ .Site.BaseURL }}images/fractal_thumb.png{{ end }}" alt="{{ $image.Name }}" />
+              {{ end }}
+            {{else}}
+            No image
+            {{end}}
+          </figure>
+        </div>
+        <div class="card-content">
+            <div>
+              {{ .Content }}
+            </div>
+        </div>
+      </div>
+    </div>
+    </section>
+
+      <section class="section is-medium pt-6" id="blog">
+        <div class="container">
+          <div class="header">
+            <h2 class="title section-title is-3">Recent Posts</h2>
+            <div class="header-bar"></div>
+          </div>
+      
+          <div class="columns is-centered is-multiline is-variable is-5">
+            {{ range first 4 $.Site.RegularPages.ByPublishDate.Reverse }}
+              <div class="column is-3">
+                <a href="{{ .Permalink }}">
+                  <div class="card">
+                    <div class="card-image">
+                      <figure class="image is-4by3">
+                        {{ $coverImageName := index .Params "coverImage" }}
+                        {{if $coverImageName}}
+                        {{ with .Resources.GetMatch $coverImageName  }}
+                            {{ $cover := . }}
+                            {{ $image := $cover.Resize "300x" }}
+                            <img src="{{ with $image }}{{ $image.RelPermalink }}{{ else }}{{ .Site.BaseURL }}images/fractal_thumb.png{{ end }}" alt="{{ $image.Name }}" />
+                          {{ end }}
+                        {{else}}
+                        No image
+                        {{end}}
+                      </figure>
+                    </div>
+                    <div class="card-content">
+                        <div class="title">
+                          {{ .Title }}
+                        </div>
+                        <div class="subtitle has-text-weight-bold is-size-6">
+                          {{ .Date.Format "2006-01-02" }}
+                        </div>
+                        <div class="card-summary">
+                          {{ .Summary }}
+                        </div>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            {{ end }}
+          </div>
+        </div>
+      </section>
+</div>
+{{ end }}

@@ -1,4 +1,5 @@
 {{ define "main" }}
+  {{ $isFirst := true }}
   {{ if .Site.Params.hero }}
     {{ partial "hero.html" . }}
   {{ end }}
@@ -17,6 +18,10 @@
     {{ partial "experience.html" . }}
   {{ end }}
 
+  {{ if .Site.Params.certificates }}
+    {{ partial "certificates.html" . }}
+  {{ end }}
+
   {{ if .Site.Params.blog }}
     {{ partial "blog.html" . }}
   {{ end }}
@@ -24,6 +29,14 @@
   {{ if .Site.Params.contact.active }}
     {{ partial "contact.html" . }}
   {{ end }}
+
+  <section id="backtothetop">
+    <a href="#home" class="mj-button mj-round-button">
+      <span class="icon">
+        <i class="fas fa-angle-double-up"></i>
+      </span>
+    </a>
+  </section>
 {{ end }}
 
 {{ define "scripts" }}

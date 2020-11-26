@@ -1,75 +1,13 @@
-.hero {
-  background-image: url(../images/hero-bg.jpg);
-  background: linear-gradient(rgba(31, 44, 108, 0.65), rgba(31, 44, 108, 0.65)),
-    rgba(0, 0, 0, 0.55) url(../images/hero-bg.jpg) no-repeat;
-  background-attachment: fixed;
-  background-size: cover;
-  box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-  font-family: 'Poppins', sans-serif;
-  position: relative;
+@import 'variables';
+@import 'base';
 
-  &,
-  .title,
-  .subtitle {
-    color: white;
-  }
-}
+@import 'hero';
+@import 'navbar';
+@import 'certificates';
+@import 'skills';
+@import 'experience';
+@import 'contact';
+@import 'footer';
+@import 'blog';
 
-.hero-body {
-  z-index: 10;
-}
-
-.hero .background {
-  position: absolute;
-  display: block;
-  top: 0;
-  left: 0;
-  z-index: 0;
-}
-
-.navbar-menu ul {
-  display: flex;
-}
-
-.navbar-menu li.active a {
-  font-weight: bold;
-}
-
-.section:nth-of-type(2n + 0) {
-  background-color: grey;
-}
-
-.section .header {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  .section-title {
-    text-transform: uppercase;
-  }
-
-  .header-bar {
-    width: 70px;
-    height: 3px;
-    background-color: #000;
-    margin-bottom: 3rem;
-  }
-}
-
-section#skills {
-  .card {
-    height: 100%;
-    min-height: 150px;
-    max-width: 450px;
-    margin: 0 auto;
-  }
-}
-
-.section p {
-  white-space: pre-wrap;
-}
-
-.footer {
-  text-transform: uppercase;
-}
+@import 'post';

@@ -1,0 +1,63 @@
+{{ define "main" }}
+<section class="section is-medium" id="blog">
+    <div class="container is-max-desktop">
+      <div class="header">
+        <h2 class="title section-title is-3">{{ .Title }}</h2>
+        <div class="header-bar"></div>
+      </div>
+      
+      <div class="columns is-centered is-multiline is-variable is-5">
+        {{ range  .Paginator.Pages.ByPublishDate.Reverse }}
+              <div class="column is-12">
+                <a href="{{ .Permalink }}">
+                  <div class="card">
+                    <div class="card-image">
+                      <figure class="image">
+                        {{ $coverImageName := index .Params "coverImage" }}
+                        {{if $coverImageName}}
+                        {{ with .Resources.GetMatch $coverImageName  }}
+                            {{ $cover := . }}
+                            {{ $image := $cover }}
+                            <img src="{{ with $image }}{{ $image.RelPermalink }}{{ else }}{{ .Site.BaseURL }}images/fractal_thumb.png{{ end }}" alt="{{ $image.Name }}" />
+                          {{ end }}
+                        {{else}}
+                        No image
+                        {{end}}
+                      </figure>
+                    </div>
+                    <div class="card-content">
+                        <div class="title">
+                          {{ .Title }}
+                        </div>
+                        <div class="subtitle has-text-weight-bold is-size-6">
+                          {{ .Date.Format "2006-01-02" }}
+                        </div>
+                        <div>
+                          {{ .Summary }}
+                        </div>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            {{ end }}
+          </div>
+      
+            <!-- Paginate -->
+            {{ if ne .Paginator.TotalPages 0 }}
+                <div class="paginator level mt-6">
+                    <div class="level-left">
+                        {{ if .Paginator.HasPrev }}
+                        <a href="{{ .Paginator.Prev.URL }}" class="newer"><i class="fa fa-angle-double-left"></i> Newer posts</a>
+                        {{ end }}
+                    </div>
+
+                    <div class="level-right">
+                        {{ if .Paginator.HasNext }}
+                        <a href="{{ .Paginator.Next.URL }}" class="older">Older posts <i class="fa fa-angle-double-right"></i></a>
+                        {{ end }}
+                    </div>
+                </div>
+            {{ end }}
+        </div>
+      </section>
+{{ end }}

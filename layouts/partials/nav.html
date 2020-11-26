@@ -1,35 +1,58 @@
-{{ $contact := .Site.Params.contact }}
-{{ $email := index $contact "email" }}
-
-<nav class="navbar sticky is-light">
-  <div class="navbar-menu">
+<nav class="navbar sticky">
+  <div class="navbar-brand">
     <div class="navbar-start">
-      {{ $email }}
+      {{ if .Site.Params.logoImage }}
+        <a href="/">
+          <div class="navbar-item mj-logo">
+            <img src="{{ .Site.Params.logoImage }}" alt="Logo" />
+          </div>
+        </a>
+        {{ else if .Site.Params.logoText }}
+        <div class="navbar-item mj-logo">
+          <a href="/">
+            {{ .Site.Params.logoText }}
+          </a>
+        </div>
+      {{ end }}
     </div>
+
+    <a
+      role="button"
+      class="navbar-burger burger"
+      aria-label="menu"
+      aria-expanded="false"
+      data-target="jm-menu"
+    >
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div id="jm-menu" class="navbar-menu">
     <div class="navbar-end">
       <ul id="my-awesome-nav">
         {{ if .Site.Params.hero }}
-          <li class="navbar-item"><a href="#home">Home</a></li>
+          <li class="navbar-item"><a href="/#home">Home</a></li>
         {{ end }}
 
         {{ if .Site.Params.aboutme }}
-          <li class="navbar-item"><a href="#aboutme">About me</a></li>
+          <li class="navbar-item"><a href="/#aboutme">About me</a></li>
         {{ end }}
 
         {{ if .Site.Params.skills }}
-          <li class="navbar-item"><a href="#skills">Skills</a></li>
+          <li class="navbar-item"><a href="/#skills">Skills</a></li>
         {{ end }}
 
         {{ if .Site.Params.experience }}
-          <li class="navbar-item"><a href="#experience">Experience</a></li>
+          <li class="navbar-item"><a href="/#experience">Experience</a></li>
         {{ end }}
 
         {{ if .Site.Params.blog.active }}
-          <li class="navbar-item"><a href="#blog">Blog</a></li>
+          <li class="navbar-item"><a href="/#blog">Blog</a></li>
         {{ end }}
 
         {{ if .Site.Params.contact.active }}
-          <li class="navbar-item"><a href="#contact">Contact</a></li>
+          <li class="navbar-item"><a href="/#contact">Contact</a></li>
         {{ end }}
       </ul>
     </div>

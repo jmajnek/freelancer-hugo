@@ -1,0 +1,40 @@
+@import 'variables';
+
+section#blog {
+  .card {
+    transition-property: all;
+    transition-duration: 0.5s;
+  }
+
+  .card:hover {
+    background-color: $primary;
+    color: white;
+
+    transition-property: all;
+    transition-duration: 0.5s;
+
+    .title {
+      color: white;
+    }
+
+    .subtitle {
+      color: white;
+    }
+  }
+
+  .title {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .card-summary {
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+    display: -webkit-box;
+    white-space: normal;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}

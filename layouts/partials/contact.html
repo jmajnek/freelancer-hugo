@@ -1,1 +1,45 @@
-CONTACT FORM
+<section class="section" id="contact">
+  <div class="container is-max-desktop">
+    <div class="header mb-6">
+      <h2 class="title section-title is-3">Contact</h2>
+      <div class="header-bar"></div>
+    </div>
+
+    <article>
+      <form name="contact" method="POST" data-netlify="true">
+        <div class="field">
+          <label class="label">Name</label>
+          <div class="control">
+            <input class="input" type="text" placeholder="Enter your name!" />
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label">Email</label>
+          <div class="control has-icons-left has-icons-right">
+            <input class="input" type="email" placeholder="Enter your email!" />
+            <span class="icon is-small is-left">
+              <i class="fas fa-envelope"></i>
+            </span>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="label">Message</label>
+          <div class="control">
+            <textarea
+              class="textarea"
+              placeholder="Enter your message!"
+            ></textarea>
+          </div>
+        </div>
+
+        <div class="field my-6 is-grouped is-flex is-justify-content-center">
+          <div class="control">
+            <button class="mj-button">Submit</button>
+          </div>
+        </div>
+      </form>
+    </article>
+  </div>
+</section>

@@ -1,8 +1,10 @@
-<section class="section is-medium" id="aboutme">
-  <div class="header">
-    <h2 class="title section-title is-3">About me</h2>
-    <div class="header-bar"></div>
+<section class="section" id="aboutme">
+  <div class="container is-max-desktop">
+    <div class="header" aos="slide-in-left">
+      <h2 class="title section-title is-3">About me</h2>
+      <div class="header-bar"></div>
+    </div>
+    <p>{{ .Site.Params.aboutme.text }}</p>
   </div>
-
-  <p>{{ .Site.Params.aboutme.text }}</p>
+  {{ partial "divider.html" . }}
 </section>

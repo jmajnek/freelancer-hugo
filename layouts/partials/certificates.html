@@ -1,0 +1,39 @@
+{{ $certificates := .Site.Params.certificates }}
+
+<section class="section" id="certificades">
+  <div class="container is-max-desktop">
+    <div class="header mb-6">
+      <h2 class="title section-title is-3">Certifications</h2>
+      <div class="header-bar"></div>
+    </div>
+
+    <div class="rows">
+      {{ range $certificates }}
+        <div class="row">
+          <a href="{{ .link }}">
+            <div class="card column columns is-12 py-6">
+              <div class="card-contents columns column is-12">
+                <div
+                  class="column is-4 is-flex is-justify-content-center is-align-content-center is-flex-direction-column"
+                >
+                  <div
+                    class="is-flex is-align-content-center is-flex-direction-column"
+                  >
+                    <div class="title has-text-centered">{{ .title }}</div>
+                    <div class="date has-text-centered">{{ .date }}</div>
+                  </div>
+                </div>
+                <div class="column is-7 description">{{ .description }}</div>
+              </div>
+              <figure class="card-image icon">
+                <i class="{{ .icon }}"></i>
+              </figure>
+            </div>
+          </a>
+        </div>
+      {{ end }}
+    </div>
+  </div>
+
+  {{ partial "divider.html" . }}
+</section>

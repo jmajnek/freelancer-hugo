@@ -1,0 +1,15 @@
+@import 'variables';
+
+section#backtothetop {
+  position: relative;
+
+  .mj-round-button {
+    position: absolute;
+  }
+}
+
+// Footer
+.footer {
+  border-top: solid 2px black;
+  text-transform: uppercase;
+}

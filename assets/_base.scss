@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+@import 'variables';
+
+$divider-height: 180px;
+
+body {
+  font-family: 'Raleway';
+  font-size: $font-size;
+}
+
+.section {
+  position: relative;
+  padding-top: $divider-height;
+}
+
+.section:nth-of-type(2n) {
+  fill: white;
+  background-color: white;
+}
+
+.section:nth-of-type(2n + 1) {
+  fill: $background;
+  background-color: $background;
+}
+
+.section .header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .section-title {
+    text-transform: uppercase;
+    color: $secondary;
+  }
+
+  .header-bar {
+    width: 70px;
+    height: 3px;
+    background-color: $secondary;
+    margin-bottom: 3rem;
+  }
+}
+
+.section p {
+  white-space: pre-wrap;
+}
+
+.divider {
+  position: absolute;
+  bottom: -$divider-height;
+  right: 0;
+  left: 0;
+  width: 100%;
+  height: $divider-height;
+  fill: inherit;
+  background: transparent;
+  z-index: 1;
+}
+
+.mj-button {
+  background-color: white;
+
+  color: $secondary;
+  border: solid 2px $secondary;
+  font-size: 1.4rem;
+  padding: 12px 20px;
+
+  transition-property: all;
+  transition-duration: 0.5s;
+  transition-timing-function: ease;
+  transition-delay: 0s;
+
+  &:hover {
+    color: contrast-color($navbar-bg, $secondary, white);
+    background-color: $primary;
+    border-color: $primary;
+    cursor: pointer;
+  }
+
+  i {
+    font-size: 1rem;
+    margin-left: 0.5em;
+
+    transition-property: all;
+    transition-duration: 0.5s;
+    transition-timing-function: ease;
+    transition-delay: 0s;
+  }
+}
+
+.mj-round-button {
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  top: -35px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  text-align: center;
+  height: 70px;
+  width: 70px;
+  border-radius: 40px;
+
+  i {
+    font-size: 1.4rem;
+    margin-left: 0;
+  }
+}
+
+[aos='animated.slide-in-left'] {
+  opacity: 0;
+  transition-property: opacity;
+}
+
+[aos='animated.slide-in-left'].aos-animate {
+  opacity: 1;
+}

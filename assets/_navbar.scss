@@ -1,0 +1,43 @@
+@import 'variables';
+
+.navbar {
+  background-color: $navbar-bg;
+
+  .mj-logo a {
+    color: $highlight;
+    font-weight: 600;
+    font-size: 1.5rem;
+  }
+
+  .navbar-burger,
+  .navbar-menu a {
+    color: contrast-color($navbar-bg, $secondary, white);
+  }
+}
+
+.navbar-menu {
+  background-color: $navbar-bg;
+  box-shadow: none;
+
+  a {
+    text-transform: uppercase;
+  }
+
+  a:hover {
+    color: $highlight;
+  }
+
+  ul {
+    display: flex;
+
+    @media (max-width: 1024px) {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+}
+
+.navbar-menu li.active a {
+  color: $highlight;
+  font-weight: bold;
+}

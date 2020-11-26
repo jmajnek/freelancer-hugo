@@ -1,31 +1,37 @@
 {{ $skills := .Site.Params.skills }}
 
-<section class="section is-medium" id="skills">
-  <div class="header">
-    <h2 class="title section-title is-3">Skills</h2>
-    <div class="header-bar"></div>
-  </div>
+<section class="section" id="skills">
+  <div class="container is-max-desktop">
+    <div class="header">
+      <h2 class="title section-title is-3">Skills</h2>
+      <div class="header-bar"></div>
+    </div>
 
-  <div class="columns is-centered is-multiline is-variable is-5">
-    {{ range $skills }}
-      <div
-        class="column is-full is-half-tablet is-one-third-desktop is-one-quarter-widescreen "
-      >
-        <div class="card">
-          <div class="card-content">
-            <div class="content">
-              <div class="has-text-centered">
-                <span class="icon is-size-1">
-                  <span class="fa-fw {{ .icon }}"></span>
-                </span>
-                <p class="title is-4">{{ .name }}</p>
+    <div class="columns is-centered is-multiline is-variable is-5">
+      {{ range $skills }}
+        <div
+          class="column is-full is-half-tablet is-one-third-desktop is-one-third-widescreen"
+        >
+          <div class="card">
+            <div class="card-image">
+              <figure class="image is-size-1 has-text-centered">
+                <span class="fa-fw {{ .icon }}"></span>
+              </figure>
+            </div>
+            <div class="card-content">
+              <div class="content">
+                <div class="has-text-centered">
+                  <p class="title is-4 mb-4">{{ .name }}</p>
+                </div>
+
+                <p>{{ .description }}</p>
               </div>
-
-              <p>{{ .description }}</p>
             </div>
           </div>
         </div>
-      </div>
-    {{ end }}
+      {{ end }}
+    </div>
   </div>
+
+  {{ partial "divider.html" . }}
 </section>
