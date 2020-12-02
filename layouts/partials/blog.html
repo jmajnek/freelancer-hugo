@@ -1,56 +1,56 @@
-<section class="section" id="blog">
-  <div class="container">
-    <div class="header">
-      <h2 class="title section-title is-3">Blog</h2>
-      <div class="header-bar"></div>
-    </div>
-
-    <div class="columns is-centered is-multiline is-variable is-5">
-      {{ range first 6 $.Site.RegularPages.ByPublishDate.Reverse }}
-        <div class="column is-4">
-          <a href="{{ .Permalink }}">
-            <div class="card">
-              <div class="card-image">
-                <figure class="image is-4by3">
-                  {{ $coverImageName := index .Params "coverImage" }}
-                  {{ if $coverImageName }}
-                    {{ with .Resources.GetMatch $coverImageName }}
-                      {{ $cover := . }}
-                      {{ $image := $cover.Resize "300x" }}
-                      <img
-                        src="{{ with $image }}{{ $image.RelPermalink }}{{ else }}{{ .Site.BaseURL }}images/fractal_thumb.png{{ end }}"
-                        alt="{{ $image.Name }}"
-                      />
-                    {{ end }}
-                    {{ else }}
-                    No image
-                  {{ end }}
-                </figure>
-              </div>
-              <div class="card-content">
-                <div class="title">
-                  {{ .Title }}
-                </div>
-                <div class="subtitle has-text-weight-bold is-size-6">
-                  {{ .Date.Format "2006-01-02" }}
-                </div>
-                <div class="card-summary">
-                  {{ .Summary }}
-                </div>
-              </div>
-            </div>
-          </a>
-        </div>
-      {{ end }}
-    </div>
-
-    <div class="is-flex is-justify-content-center	my-6">
-      <a class="mj-button" href="/posts/">
-        More
-        <i class="fas fa-arrow-right"></i>
-      </a>
-    </div>
+<section class="blog">
+<div class="container">
+  <div class="header">
+    <h2 class="title section-title is-3">Blog</h2>
+    <div class="header-bar"></div>
   </div>
 
-  {{ partial "divider.html" . }}
+  <div class="columns is-centered is-multiline is-variable is-5">
+    {{ range first 3 $.Site.RegularPages.ByPublishDate.Reverse }}
+      <div class="column is-4">
+        <a href="{{ .Permalink }}">
+          <div class="card">
+            <div class="card-image">
+              <figure class="image is-4by3">
+                {{ $coverImageName := index .Params "coverImage" }}
+                {{ if $coverImageName }}
+                  {{ with .Resources.GetMatch $coverImageName }}
+                    {{ $cover := . }}
+                    {{ $image := $cover.Resize "300x" }}
+                    <img
+                      src="{{ with $image }}{{ $image.RelPermalink }}{{ else }}{{ .Site.BaseURL }}images/fractal_thumb.png{{ end }}"
+                      alt="{{ $image.Name }}"
+                    />
+                  {{ end }}
+                  {{ else }}
+                  No image
+                {{ end }}
+              </figure>
+            </div>
+            <div class="card-content">
+              <div class="title">
+                {{ .Title }}
+              </div>
+              <div class="subtitle has-text-weight-bold is-size-6">
+                {{ .Date.Format "2006-01-02" }}
+              </div>
+              <div class="card-summary">
+                {{ .Summary }}
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+    {{ end }}
+  </div>
+
+  <div class="is-flex is-justify-content-center	my-6">
+    <a class="mj-button" href="/posts/">
+      More
+      <i class="fas fa-arrow-right"></i>
+    </a>
+  </div>
+</div>
+
+{{ partial "divider.html" . }}
 </section>

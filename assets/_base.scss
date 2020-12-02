@@ -11,7 +11,7 @@ body {
 
 .section {
   position: relative;
-  padding-top: $divider-height;
+  // padding-top: $divider-height;
 }
 
 .section:nth-of-type(2n) {
@@ -119,4 +119,13 @@ body {
 
 [aos='animated.slide-in-left'].aos-animate {
   opacity: 1;
+}
+
+.fp-controlArrow.fp-next {
+  right: 50px;
+}
+
+#fp-nav ul li a span,
+.fp-slidesNav ul li a span {
+  background: $primary;
 }

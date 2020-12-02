@@ -10,6 +10,13 @@ section#backtothetop {
 
 // Footer
 .footer {
+  background-color: transparent;
   border-top: solid 2px black;
   text-transform: uppercase;
+  padding: 3rem 1.5rem 2rem;
+
+  .mj-round-button:not(:hover) {
+    background: none;
+    border: none;
+  }
 }

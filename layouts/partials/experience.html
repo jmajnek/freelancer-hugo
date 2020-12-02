@@ -1,25 +1,25 @@
 {{ $experience := .Site.Params.experience }}
 
-<section class="section" id="experience">
-  <div class="container is-max-desktop">
-    <div class="header mb-6">
-      <h2 class="title section-title is-3">Experience</h2>
-      <div class="header-bar"></div>
-    </div>
-
-    {{ range $experience }}
-      <div class="columns">
-        <div class="column is-3 pl-4 dashed-border">
-          <div class="company">{{ .company }}</div>
-          <div class="from-till">{{ .from }} - {{ .till }}</div>
-          <i class="fas fa-check"></i>
-        </div>
-        <div class="column is-3 pl-4 position">{{ .position }}</div>
-        <div class="column is-6 pl-4 pb-6 description">{{ .description }}</div>
-      </div>
-      <p></p>
-    {{ end }}
+<section class="experience">
+<div class="container is-max-desktop">
+  <div class="header mb-6">
+    <h2 class="title section-title is-3">Experience</h2>
+    <div class="header-bar"></div>
   </div>
 
-  {{ partial "divider.html" . }}
+  {{ range $experience }}
+    <div class="columns">
+      <div class="column is-3 pl-4 dashed-border">
+        <div class="company">{{ .company }}</div>
+        <div class="from-till">{{ .from }} - {{ .till }}</div>
+        <i class="fas fa-check"></i>
+      </div>
+      <div class="column is-3 pl-4 position">{{ .position }}</div>
+      <div class="column is-6 pl-4 pb-6 description">{{ .description }}</div>
+    </div>
+    <p></p>
+  {{ end }}
+</div>
+
+{{ partial "divider.html" . }}
 </section>

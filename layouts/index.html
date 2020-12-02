@@ -1,42 +1,114 @@
 {{ define "main" }}
-  {{ $isFirst := true }}
-  {{ if .Site.Params.hero }}
-    {{ partial "hero.html" . }}
-  {{ end }}
+  <div id="fullpage">
+    <div class="section">
+      {{ partial "hero.html" . }}
+    </div>
+
+    {{ if .Site.Params.aboutme }}
+      <div class="section">
+        {{ partial "aboutme.html" . }}
+      </div>
+    {{ end }}
+
+    {{ if .Site.Params.skills }}
+      <div class="section">
+        {{ partial "skills.html" . }}
+      </div>
+    {{ end }}
+
+    {{ if .Site.Params.experience }}
+      <div class="section">
+        {{ partial "experience.html" . }}
+      </div>
+    {{ end }}
+
+    {{ if .Site.Params.certificates }}
+      <div class="section">
+        {{ partial "certificates.html" . }}
+      </div>
+    {{ end }}
+
+    {{ if .Site.Params.blog }}
+      <div class="section">
+        {{ partial "blog.html" . }}
+      </div>
+    {{ end }}
+
+    {{ if .Site.Params.contact.active }}
+      <div class="section">
+        {{ partial "contact.html" . }}
+        <section id="backtothetop">
+          <a href="#home" class="mj-button mj-round-button">
+            <span class="icon">
+              <i class="fas fa-angle-double-up"></i>
+            </span>
+          </a>
+        </section>
+        {{- partial "footer.html" . -}}
+
+      </div>
+    {{ end }}
+  </div>
 
   {{ partial "nav.html" . }}
 
-  {{ if .Site.Params.aboutme }}
-    {{ partial "aboutme.html" . }}
-  {{ end }}
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"
+    integrity="sha512-DUC8yqWf7ez3JD1jszxCWSVB0DMP78eOyBpMa5aJki1bIRARykviOuImIczkxlj1KhVSyS16w2FSQetkD4UU2w=="
+    crossorigin="anonymous"
+  ></script>
 
-  {{ if .Site.Params.skills }}
-    {{ partial "skills.html" . }}
-  {{ end }}
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.9.7/vendors/scrolloverflow.js"
+    integrity="sha512-13ryG34lkmhOD5L4DTd7z1AmhUl+bhFfE7xmMvs5K3Tm9O4ua0VZs8FBuBgI4AGIAB2icf3FtGQ/fpZUGFcnkA=="
+    crossorigin="anonymous"
+  ></script>
 
-  {{ if .Site.Params.experience }}
-    {{ partial "experience.html" . }}
-  {{ end }}
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/fullPage.js/2.9.7/jquery.fullpage.min.js"
+    integrity="sha512-bxzECOBohzcTcWocMAlNDE2kYs0QgwGs4eD8TlAN2vfovq13kfDfp95sJSZrNpt0VMkpP93ZxLC/+WN/7Trw2g=="
+    crossorigin="anonymous"
+  ></script>
 
-  {{ if .Site.Params.certificates }}
-    {{ partial "certificates.html" . }}
-  {{ end }}
+  <script>
+    $(document).ready(function () {
+      $('#fullpage').fullpage({
+        navigation: true,
+        scrollOverflow: true,
+        scrollOverflowOptions: {
+          scrollbars: false,
+        },
+        verticalCentered: true,
+        anchors: [
+          'home',
+          {{ if .Site.Params.aboutme }}
+            'aboutme',
+          {{end}}
+          {{ if .Site.Params.skills }}
+            'skills',
+          {{end}}
+          {{ if .Site.Params.experience }}
+            'experience',
+          {{end}}
+          {{ if .Site.Params.certificates }}
+            'certificates',
+          {{end}}
+          {{ if .Site.Params.blog }}
+            'blog',
+          {{end}}
+          {{ if .Site.Params.contact }}
+            'contact',
+          {{end}}
+        ],
+        menu: '.navbar',
+      });
 
-  {{ if .Site.Params.blog }}
-    {{ partial "blog.html" . }}
-  {{ end }}
-
-  {{ if .Site.Params.contact.active }}
-    {{ partial "contact.html" . }}
-  {{ end }}
-
-  <section id="backtothetop">
-    <a href="#home" class="mj-button mj-round-button">
-      <span class="icon">
-        <i class="fas fa-angle-double-up"></i>
-      </span>
-    </a>
-  </section>
+      $('.navbar-item > a').on('click', function () {
+        $('.navbar-menu').removeClass('is-active')
+        $('.navbar-burger').removeClass('is-active')
+      });
+    });
+  </script>
 {{ end }}
 
 {{ define "scripts" }}

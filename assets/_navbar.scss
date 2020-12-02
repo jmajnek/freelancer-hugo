@@ -1,7 +1,17 @@
 @import 'variables';
 
 .navbar {
-  background-color: $navbar-bg;
+  background-color: transparent;
+
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+
+  transition-property: all;
+  transition-duration: 0.5s;
+  transition-timing-function: ease;
+  transition-delay: 0s;
 
   .mj-logo a {
     color: $highlight;
@@ -11,13 +21,17 @@
 
   .navbar-burger,
   .navbar-menu a {
-    color: contrast-color($navbar-bg, $secondary, white);
+    color: contrast-color($background, $secondary, white);
   }
 }
 
 .navbar-menu {
-  background-color: $navbar-bg;
   box-shadow: none;
+
+  transition-property: all;
+  transition-duration: 0.5s;
+  transition-timing-function: ease;
+  transition-delay: 0s;
 
   a {
     text-transform: uppercase;
@@ -40,4 +54,17 @@
 .navbar-menu li.active a {
   color: $highlight;
   font-weight: bold;
+}
+
+body:not(.fp-viewing-home) .navbar {
+  background-color: $navbar-bg;
+
+  .navbar-burger,
+  .navbar-item:not(.active):not(.mj-logo) a {
+    color: contrast-color($navbar-bg, $secondary, white);
+  }
+
+  .navbar-menu {
+    background-color: $navbar-bg;
+  }
 }

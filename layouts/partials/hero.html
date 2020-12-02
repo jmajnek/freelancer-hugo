@@ -1,23 +1,27 @@
 {{ $hero := .Site.Params.hero }}
-{{ $contact := .Site.Params.contact }}
+{{ $hasParticles := .Site.Params.settings.particles }}
 {{ $greeting := index $hero "greeting" }}
 {{ $name := index $hero "name" }}
 {{ $description := index $hero "description" }}
 
-<section class="hero is-fullheight" id="home">
-  <div class="hero-body pb-0 is-flex is-justify-content-space-around">
-    <div class="has-text-centered m-5 p-5">
-      <div class="pretitle">{{ $greeting }}</div>
-      <div class="title">{{ $name }}</div>
-      <div class="subtitle">{{ $description }}</div>
-      <a class="mj-button" href="#aboutme">
-        About
-        <i class="fas fa-arrow-right"></i>
-      </a>
-    </div>
-    <div class="hero-image">
-      <img src="/images/jm-profile-big.png" alt="" />
-    </div>
+<section class="home">
+<div class="hero-body pb-0 is-flex is-justify-content-space-around">
+  <div class="has-text-centered m-5 p-5">
+    <div class="pretitle">{{ $greeting }}</div>
+    <div class="title">{{ $name }}</div>
+    <div class="subtitle">{{ $description }}</div>
+    <a class="mj-button" href="#aboutme">
+      More
+      <i class="fas fa-arrow-right"></i>
+    </a>
   </div>
-  <canvas class="background"></canvas>
+  <div class="hero-image">
+    <img src="/images/jm-profile-big.png" alt="" />
+  </div>
+</div>
+
+{{ if $hasParticles }}
+<canvas class="background"></canvas>
+{{end}}
+
 </section>

@@ -2,7 +2,7 @@
   "scripts": {
     "build": "cd ./exampleSite && hugo",
     "start:release": "npm run build -- server",
-    "start": "npm run start:release -- --themesDir ../.. -D",
+    "start": "npm run start:release -- --themesDir ../.. -D --bind=0.0.0.0 --baseURL=http://0.0.0.0:1313",
     "new:post": "npm run build -- --themesDir ../.. new posts/test.md",
     "copy:assets": "npm run copy:bulma && npm run copy:stickyjs && npm run copy:particlesjs && npm run copy:gumshoejs",
     "copy:bulma": "rimraf ./assets/bulma/ && copyfiles -u 2 \"./node_modules/bulma/**/*.sass\" \"./assets/bulma/\"",

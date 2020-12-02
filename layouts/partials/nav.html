@@ -1,4 +1,4 @@
-<nav class="navbar sticky">
+<nav class="navbar">
   <div class="navbar-brand">
     <div class="navbar-start">
       {{ if .Site.Params.logoImage }}
@@ -32,27 +32,45 @@
     <div class="navbar-end">
       <ul id="my-awesome-nav">
         {{ if .Site.Params.hero }}
-          <li class="navbar-item"><a href="/#home">Home</a></li>
+          <li class="navbar-item" data-menuanchor="home">
+            <a href="/#home">Home</a>
+          </li>
         {{ end }}
 
         {{ if .Site.Params.aboutme }}
-          <li class="navbar-item"><a href="/#aboutme">About me</a></li>
+          <li class="navbar-item" data-menuanchor="aboutme">
+            <a href="/#aboutme">About me</a>
+          </li>
         {{ end }}
 
         {{ if .Site.Params.skills }}
-          <li class="navbar-item"><a href="/#skills">Skills</a></li>
+          <li class="navbar-item" data-menuanchor="skills">
+            <a href="/#skills">Skills</a>
+          </li>
         {{ end }}
 
         {{ if .Site.Params.experience }}
-          <li class="navbar-item"><a href="/#experience">Experience</a></li>
+          <li class="navbar-item" data-menuanchor="experience">
+            <a href="/#experience">Experience</a>
+          </li>
+        {{ end }}
+
+        {{ if .Site.Params.certificates }}
+          <li class="navbar-item" data-menuanchor="certificates">
+            <a href="/#certificates">Certificates</a>
+          </li>
         {{ end }}
 
         {{ if .Site.Params.blog.active }}
-          <li class="navbar-item"><a href="/#blog">Blog</a></li>
+          <li class="navbar-item" data-menuanchor="blog">
+            <a href="/#blog">Blog</a>
+          </li>
         {{ end }}
 
         {{ if .Site.Params.contact.active }}
-          <li class="navbar-item"><a href="/#contact">Contact</a></li>
+          <li class="navbar-item" data-menuanchor="contact">
+            <a href="/#contact">Contact</a>
+          </li>
         {{ end }}
       </ul>
     </div>
