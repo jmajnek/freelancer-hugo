@@ -6,6 +6,7 @@ section.home {
   background-attachment: fixed;
   background-size: cover;
   z-index: 1;
+  padding-bottom: 0;
 
   .pretitle,
   .title,
@@ -30,18 +31,30 @@ section.home {
 
 .hero-body {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   z-index: 10;
   position: relative;
+  height: 100%;
+  max-height: calc(100vh - #{$section-padding-top});
+  padding: 0;
 
-  @media (max-width: 600px) {
+  & > div {
+    flex-basis: auto;
+    flex-grow: 1;
+  }
+
+  @media (max-width: 800px) {
     flex-direction: column;
   }
 
   .hero-image {
     display: flex;
     align-items: flex-end;
-    align-self: flex-end;
+    justify-content: center;
+
+    img {
+      max-width: 75%;
+    }
   }
 }
 
@@ -51,4 +64,8 @@ section.home {
   top: 0;
   left: 0;
   z-index: 0;
+}
+
+.home .welcome-block {
+  align-self: center;
 }

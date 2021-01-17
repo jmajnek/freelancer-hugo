@@ -1,6 +1,9 @@
 @import 'variables';
 
 section.contact {
+  height: auto;
+  padding-bottom: 0;
+
   input,
   textarea {
     border: none;

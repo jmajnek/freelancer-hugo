@@ -5,23 +5,22 @@
 {{ $description := index $hero "description" }}
 
 <section class="home">
-<div class="hero-body pb-0 is-flex is-justify-content-space-around">
-  <div class="has-text-centered m-5 p-5">
-    <div class="pretitle">{{ $greeting }}</div>
-    <div class="title">{{ $name }}</div>
-    <div class="subtitle">{{ $description }}</div>
-    <a class="mj-button" href="#aboutme">
-      More
-      <i class="fas fa-arrow-right"></i>
-    </a>
+  <div class="hero-body pb-0">
+    <div class="has-text-centered m-5 p-5 welcome-block">
+      <div class="pretitle">{{ $greeting }}</div>
+      <div class="title">{{ $name }}</div>
+      <div class="subtitle">{{ $description }}</div>
+      <a class="mj-button" href="#aboutme">
+        More
+        <i class="fas fa-arrow-right"></i>
+      </a>
+    </div>
+    <div class="hero-image">
+      <img src="/images/jm-profile-big.png" alt="" />
+    </div>
   </div>
-  <div class="hero-image">
-    <img src="/images/jm-profile-big.png" alt="" />
-  </div>
-</div>
 
-{{ if $hasParticles }}
-<canvas class="background"></canvas>
-{{end}}
-
+  {{ if $hasParticles }}
+    <canvas class="background"></canvas>
+  {{ end }}
 </section>

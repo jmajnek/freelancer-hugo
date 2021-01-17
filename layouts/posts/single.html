@@ -42,9 +42,9 @@
             <h2 class="title section-title is-3">Recent Posts</h2>
             <div class="header-bar"></div>
           </div>
-      
+
           <div class="columns is-centered is-multiline is-variable is-5">
-            {{ range first 4 $.Site.RegularPages.ByPublishDate.Reverse }}
+            {{ range first 3 $.Site.RegularPages.ByPublishDate.Reverse }}
               <div class="column is-3">
                 <a href="{{ .Permalink }}">
                   <div class="card">

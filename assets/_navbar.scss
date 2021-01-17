@@ -28,11 +28,6 @@
 .navbar-menu {
   box-shadow: none;
 
-  transition-property: all;
-  transition-duration: 0.5s;
-  transition-timing-function: ease;
-  transition-delay: 0s;
-
   a {
     text-transform: uppercase;
   }
@@ -64,7 +59,7 @@ body:not(.fp-viewing-home) .navbar {
     color: contrast-color($navbar-bg, $secondary, white);
   }
 
-  .navbar-menu {
+  .navbar-menu.is-active {
     background-color: $navbar-bg;
   }
 }

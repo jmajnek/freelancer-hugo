@@ -8,7 +8,7 @@
   <div class="columns is-centered is-multiline is-variable is-5">
     {{ range first 3 $.Site.RegularPages.ByPublishDate.Reverse }}
       <div class="column is-4">
-        <a href="{{ .Permalink }}">
+        <a href="{{ .RelPermalink }}">
           <div class="card">
             <div class="card-image">
               <figure class="image is-4by3">
