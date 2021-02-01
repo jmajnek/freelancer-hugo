@@ -123,8 +123,29 @@
     <script type="text/javascript" lazy>
       Particles.init({
         selector: '.background',
+        maxParticles: 200,
         connectParticles: true,
         color: '#BBBBBB',
+        responsive: [
+          {
+            breakpoint:768,
+            options: {
+              maxParticles: 100,
+            }
+          },
+          {
+            breakpoint: 425,
+            options: {
+              maxParticles: 50,
+            }
+          },
+          {
+            breakpoint: 320,
+            options: {
+              maxParticles: 0
+            }
+          }
+        ]
       })
     </script>
   {{ end }}
