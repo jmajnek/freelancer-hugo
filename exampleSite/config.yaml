@@ -1,14 +1,25 @@
 baseURL: '/'
-languageCode: 'en-us'
+defaultContentLanguage: 'en'
 title: 'Jakob Majnek'
 theme: 'freelancer-hugo'
 paginate: 10
+enableRobotsTXT: true
+
+languages:
+  en:
+    languageName: 'English'
+    languageCode: 'en-US'
+    weight: 1
 
 taxonomies:
   tag: 'tags'
   category: 'categories'
 
 params:
+  description: This is my website
+  themeColor: '#ccc'
+  keywords: ['Jakob Majnek', 'Software Developer', 'Freelancer']
+
   logoText: Jakob Majnek
   settings:
     particles: true

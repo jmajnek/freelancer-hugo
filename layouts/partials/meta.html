@@ -1,11 +1,110 @@
-<title itemprop="name">{{ .Title }} | {{ .Site.Title }}</title>
-<meta property="og:title" content="{{ .Title }} | {{ .Site.Title }}" />
-<meta name="twitter:title" content="{{ .Title }} | {{ .Site.Title }}" />
-<meta itemprop="name" content="{{ .Title }} | {{ .Site.Title }}" />
-<meta name="application-name" content="{{ .Title }} | {{ .Site.Title }}" />
-<meta property="og:site_name" content="{{ .Site.Params.sitename }}" />
+{{$title := $.Site.Title }}
+{{$description := $.Site.Params.description }}
+{{$keywords := $.Site.Params.keywords }}
 
-<meta name="description" content="{{ .Params.description }}" />
-<meta itemprop="description" content="{{ .Params.description }}" />
-<meta property="og:description" content="{{ .Params.description }}" />
-<meta name="twitter:description" content="{{ .Params.description }}" />
+{{if not .IsHome}}
+  {{$title = print $.Title " | " $.Site.Title }}
+  {{$description = $.Description }}
+  {{$keywords = $.Keywords }}
+{{end}}
+
+<title itemprop="name">{{$title}}</title>
+<meta property="og:title" content="{{$title}}" />
+<meta name="twitter:title" content="{{$title}}" />
+<meta itemprop="name" content="{{$title}}" />
+<meta name="application-name" content="{{$title}}" />
+<meta property="og:site_name" content="{{ .Site.Title }}" />
+
+<meta name="keywords" content={{ delimit $keywords " " }} />
+
+<meta name="description" content="{{$description}}" />
+<meta itemprop="description" content="{{$description}}" />
+<meta property="og:description" content="{{$description}}" />
+<meta name="twitter:description" content="{{$description}}" />
+<meta name="description" content="{{$description}}" />
+
+
+<meta property="og:locale" content="{{ .Site.LanguageCode }}">
+<meta name="language" content="{{ .Language.LanguageName }}">
+{{ range .AllTranslations }}
+  <link rel="alternate" hreflang="{{ .Language.Lang }}" href="{{ .Permalink }}" title="{{ .Language.LanguageName }}">
+{{ end }}
+
+<link rel="canonical" href="{{ .Permalink }}" itemprop="url" />
+<meta name="url" content="{{ .Permalink }}" />
+<meta name="twitter:url" content="{{ .Permalink }}" />
+<meta property="og:url" content="{{ .Permalink }}" />
+
+{{ if eq .Section "posts" }}
+  <!-- Pagination meta tags for list pages only -->
+  {{ $paginator := .Paginate (where .Pages "Section" "blog") }}
+  {{ if $paginator }}
+    <link rel="first" href="{{ $paginator.First.URL }}">
+    <link rel="last" href="{{ $paginator.Last.URL }}">
+    {{ if $paginator.HasPrev }}
+      <link rel="prev" href="{{ $paginator.Prev.URL }}">
+    {{end }}
+    {{ if $paginator.HasNext }}
+      <link rel="next" href="{{ $paginator.Next.URL }}">
+    {{end }}
+  {{end }}
+
+  <meta property="og:type" content="article" />
+  <meta property="article:publisher" content="{{ .Site.Params.facebook }}" />
+  <meta property="og:article:published_time" content={{ .Date.Format "2006-01-02T15:04:05Z0700" | safeHTML }} />
+  <meta property="article:published_time" content={{ .Date.Format "2006-01-02T15:04:05Z0700" | safeHTML }} />
+
+
+  {{ with.Params.author }}
+    <meta property="og:article:author" content="{{humanize . }}" />
+    <meta property="article:author" content="{{humanize . }}" />
+    <meta name="author" content="{{humanize . }}" />
+  {{ end }}
+
+
+  {{ with.Params.category }}
+    <meta name="news_keywords" content="{{ index . 0 }}" />
+    <meta property="article:section" content="{{ index . 0 }}" />
+  {{ end }}
+
+  <script defer type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Article",
+      "headline": {{ .Title }},
+      "author": {
+        "@type": "Person",
+        "name": "{{ .Params.author }}"
+      },
+      "datePublished": "{{ .Date.Format "2006-01-02" }}",
+      "description": {{ .Description }},
+      "wordCount": {{ .WordCount }},
+      "mainEntityOfPage": "True",
+      "dateModified": "{{ .Lastmod.Format "2006-01-02" }}",
+      "publisher": {
+        "@type": "Organization",
+        "name": "{{ .Site.Title }}",
+      }
+    }
+  </script>
+{{else}}
+<meta property="og:type" content="website" />
+<script defer type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "url": "{{ .Permalink }}",
+    "sameAs": [
+      {{range .Site.Params.social}}
+      "{{ .link }}",
+      {{end}}
+    ],
+    "name": "{{ .Title }}",
+    "logo": "https://www.example.com/images/brand/favicon.png"
+  }
+</script>
+{{ end }}
+
+<!-- Theme Color -->
+<meta name="theme-color" content="{{.Site.Params.themeColor}}" />
+<meta name="msapplication-TileColor" content="{{.Site.Params.themeColor}}" />
