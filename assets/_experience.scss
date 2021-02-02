@@ -20,8 +20,12 @@ section.experience {
   }
 
   .description {
+    text-align: justify;
+
     @media (max-width: 768px) {
       border-right: none;
+      padding-left: 2rem !important;
+      padding-right: 2rem !important;
     }
   }
 
@@ -51,5 +55,9 @@ section.experience {
     @media (max-width: 768px) {
       display: none;
     }
+  }
+
+  @media (max-width: 768px) {
+    text-align: center;
   }
 }
